@@ -62,7 +62,7 @@ upgrade-pip: venv
 unit-tests:
 	${INVENV} pytest -vv $(foreach lib,$(libs), ./$(lib)/tests/unit)
 
-test: run-all-tests
+test: unit-tests
 run-all-tests: install-dev
 	${INVENV} pytest -vv tests
 
