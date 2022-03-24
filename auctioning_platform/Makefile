@@ -52,9 +52,9 @@ define run_unit_tests
 endef
 
 .PHONY: dev
-dev: venv
-	# pip install --use-feature=2020-resolver -r requirements.txt -r requirements-dev.txt
-	$(foreach lib,$(libs),$(call install_dev,$(lib)))
+dev:
+	poetry install
+	# $(foreach lib,$(libs),$(call install_dev,$(lib)))
 
 .PHONY: freeze-deps
 freeze-deps:
@@ -63,7 +63,7 @@ freeze-deps:
 
 .PHONY: test
 test: venv
-	${VENV_NAME}/bin/pytest -vv
+	${VENV_NAME}/bin/pytest -vv --cov=. --cov-report=xml webapp 
 
 .PHONY: unit-tests
 unit-tests:

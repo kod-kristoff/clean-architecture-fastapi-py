@@ -63,7 +63,7 @@ jobs:
       - name: Run tests
         run: |
           cd auctioning_platform
-          poetry run pytest -vv --cov=. --cov-report=xml
+          make test
       
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
